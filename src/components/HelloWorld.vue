@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data: () => ({
     ecosystem: [
@@ -138,5 +139,18 @@ export default {
       },
     ],
   }),
+
+  created() {
+    this.teste();
+  },
+
+  methods: {
+    teste() {
+      axios
+        .get("/users")
+        .then(response => {})
+        .catch(err => {});
+    }
+  }
 };
 </script>
