@@ -17,7 +17,7 @@
                     <h1 class="flex my-4 primary--text">Percursu</h1>
                     <small>Criar uma conta de utilizador</small>
                   </div>
-                  <v-form>
+                  <v-form ref="form">
                     <v-container grid-list-md ma-0 pa-0>
                       <v-layout row wrap>
                         <v-flex xs12 md6>
@@ -124,8 +124,7 @@
                   <v-btn icon>
                     <v-icon color="light-blue">mdi-google</v-icon>
                   </v-btn>
-                  <v-btn rounded block color="primary">Registar</v-btn>
-                  <!-- <v-btn rounded @click="register()" block color="primary">Registar</v-btn> -->
+                  <v-btn rounded @click="register()" block color="primary">Registar</v-btn>
                 </div>
               </v-card>
             </v-flex>
@@ -137,7 +136,12 @@
 </template>
 
 <script>
+import { flashAlert } from "@/mixins/AppAlerts";
+import { clearForm } from "@/mixins/Form";
+
 export default {
+  mixins: [flashAlert, clearForm],
+
   data() {
     return {
       formData: {
@@ -160,17 +164,30 @@ export default {
 
   methods: {
     register() {
-      this.sending = true;
-      axios
-        .post("/api/v1/auth/register", this.$data.formData)
-        .then(response => {
-          this.sending = false;
-          this.acoountCreated = true;
-        })
-        .catch(err => {
-          this.sending = false;
-          this.acoountCreated = false;
-        });
+      this.$validator.validateAll().then(valid => {
+        if (valid) {
+          this.sending = true;
+          axios
+            .post("/register", this.$data.formData)
+            .then(response => {
+              this.sending = false;
+              this.acoountCreated = true;
+              this.$swal({
+                type: "info",
+                title: "Registo Criado com Sucesso",
+                text: "Os seus dados já foram registados, aguarde a ativação da conta. em breve enviaremos email de ativação...",
+                footer:
+                  "Apreciamos a sua participação nesta plataforma... Boa Sorte"
+              });
+              this.clear();
+              this.$router.push({ path: "/" });
+            })
+            .catch(err => {
+              this.sending = false;
+              this.acoountCreated = false;
+            });
+        }
+      });
     }
   }
 };

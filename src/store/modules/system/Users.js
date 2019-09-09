@@ -6,22 +6,22 @@ export default ({
     },
 
     getters: {
-        // users(state) {
-        //   return state.users;
-        // },
+        users(state) {
+            return state.users;
+        },
     },
 
     mutations: {
-        // updateUsers(state, payload) {
-        //   state.users = payload;
-        // },
+        updateUsers(state, payload) {
+            state.users = payload;
+        },
     },
 
     actions: {
-        // getUsers(context) {
-        //   axios.get('/api/v1/system/users').then(function(response) {
-        //     context.commit('updateUsers', response.data.data);
-        //   });
-        // },
+        getUsers(context) {
+            this.$axios.get('/users').then(function (response) {
+                context.commit('updateUsers', response.data.data);
+            });
+        },
     }
 });

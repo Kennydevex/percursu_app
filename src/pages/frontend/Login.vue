@@ -75,7 +75,8 @@
                     <v-icon color="red">mdi-twitter-box</v-icon>
                   </v-btn>
 
-                  <v-btn rounded block color="primary">Entrar</v-btn>
+                  <v-btn @click="authenticate()" rounded block color="primary">Entrar</v-btn>
+
                 </div>
               </v-card>
             </v-flex>
@@ -87,6 +88,7 @@
 </template>
 
 <script>
+import { login } from "@/helpers/authentication";
 import validateDictionary from "@/helpers/api/validateDictionary";
 export default {
   data() {
@@ -102,6 +104,37 @@ export default {
     };
   },
 
+  computed: {
+    loginError: function() {
+      return this.$store.getters.authError;
+    }
+  },
+ 
+   methods: {
+    togglePassIcon() {
+      this.passIcon = !this.passIcon;
+    },
+    authenticate() {
+      this.$validator.validateAll().then(valid => {
+        if (valid) {
+          this.sending = true;
+          this.$store.dispatch("login");
+          login(this.$data.formData)
+            .then(response => {
+            //   this.feedback("success", 'Autenticação efetuada com sucesso. Obrigado!', 5000, true, 'bottom-left');
+              this.$store.commit("loginSuccess", response);
+              this.$router.push({ path: "/" });
+              this.sending = false;
+            })
+            .catch(error => {
+              this.$store.commit("loginFailed", { error });
+              this.sending = false;
+            });
+
+        }
+      });
+    }
+  },
   mounted() {
     this.$validator.localize("pt", this.dictionary);
   }

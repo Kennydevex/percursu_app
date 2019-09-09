@@ -41,20 +41,38 @@
           <v-icon>mdi-home</v-icon>
         </v-btn>
         <v-divider vertical inset></v-divider>
-        <v-btn :ripple="false" :to="{name: 'colaboradores'}" class="pa-2" text>Colaboradores</v-btn>
-        <v-btn :ripple="false" :to="{name: 'empregos'}" class="pa-2" text>Empregos</v-btn>
-        <v-btn :ripple="false" :to="{name: 'formacoes'}" class="pa-2" text>Formações</v-btn>
-        <v-btn :ripple="false" :to="{name: 'noticias'}" class="pa-2" text>Notícias</v-btn>
+        <v-btn
+          :ripple="false"
+          :to="{name: 'colaboradores'}"
+          class="pa-2 font-weight-regular"
+          text
+        >Colaboradores</v-btn>
+        <v-btn
+          :ripple="false"
+          :to="{name: 'empregos'}"
+          class="pa-2 font-weight-regular"
+          text
+        >Empregos</v-btn>
+        <v-btn
+          :ripple="false"
+          :to="{name: 'formacoes'}"
+          class="pa-2 font-weight-regular"
+          text
+        >Formações</v-btn>
+        <v-btn
+          :ripple="false"
+          :to="{name: 'noticias'}"
+          class="pa-2 font-weight-regular"
+          text
+        >Notícias</v-btn>
 
-        <!-- <template v-if="!authUser"> -->
-        <template>
+        <template v-if="!authUser">
           <v-btn :to="{name: 'login'}" text>
             <v-icon>mdi-login</v-icon>
           </v-btn>
         </template>
 
-        <!-- <template v-else> -->
-        <template>
+        <template v-else>
           <v-menu left bottom>
             <template v-slot:activator="{ on }">
               <v-btn v-on="on" text>
@@ -130,7 +148,11 @@ export default {
   },
 
   methods: {
-    teste() {}
+    teste() {},
+    logout: function() {
+      this.$store.commit("logout");
+      this.$router.push("/");
+    }
   }
 };
 </script>

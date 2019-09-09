@@ -1,5 +1,5 @@
 // jshint esversion:6
-import axios from 'axios'
+// import axios from 'axios'
 export function init(store, router) {
     router.beforeEach((to, from, next) => {
         const authUser = store.state.authentication.authUser;
