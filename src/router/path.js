@@ -26,10 +26,10 @@ export default [
 
     //Admin Paths
     {
-        path: '/dashboard',
+        path: '/admin',
         component: Admin,
         meta: {
-            // requiresAuth: true,
+            requiresAuth: true,
             breadcrumb: true,
             manager: true,
         },
@@ -39,16 +39,17 @@ export default [
                 name: 'dashboard',
                 component: Dashboard,
                 meta: {
+                    requiresAuth: true,
                     breadcrumb: true,
                 },
             },
             {
-                path: '/perfil',
+                path: 'perfil',
                 name: 'back-perfil',
                 component: BackPerfil
             },
             {
-                path: '/parceiros',
+                path: 'parceiros',
                 component: Partners,
                 children: [
                     {

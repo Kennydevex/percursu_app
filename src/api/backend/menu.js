@@ -8,7 +8,7 @@ const Menu = [
         group: 'general',
         icon: 'mdi-view-dashboard-variant',
         name: 'dashboard',
-        role: 'admin'
+        // role: 'admin'
     },
 
     // ===============================================
@@ -24,12 +24,12 @@ const Menu = [
             name: 'list-partners',
             title: 'Parceiros',
             component: 'list-partners',
-            role: 'manager'
+            // role: 'manager'
         }, {
             name: 'list-companies',
             title: 'Empresas',
             component: 'list-companies',
-            role: 'manager'
+            // role: 'manager'
         }
         ]
     },

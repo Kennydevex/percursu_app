@@ -130,7 +130,6 @@ export default {
               this.$store.commit("loginFailed", { error });
               this.sending = false;
             });
-
         }
       });
     }

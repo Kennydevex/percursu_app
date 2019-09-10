@@ -41,8 +41,9 @@
               :group="item.group"
               :prepend-icon="item.icon"
               no-action="no-action"
-              :disabled="!(_is(item.role) || _is('admin') || _is('super-admin'))"
             >
+              <!-- :disabled="!(_is(item.role) || _is('admin') || _is('super-admin'))" -->
+
               <v-list-item slot="activator">
                 <v-list-item-content>
                   <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -79,8 +80,9 @@
                   :href="subItem.href"
                   :disabled="subItem.disabled"
                   :target="subItem.target"
-                  v-if="_is(subItem.role) || _is('admin') || _is('super-admin')"
                 >
+                  <!-- v-if="_is(subItem.role) || _is('admin') || _is('super-admin')" -->
+
                   <v-list-item-content>
                     <v-list-item-title>
                       <span>{{ subItem.title }}</span>
@@ -144,8 +146,9 @@
       <v-menu left bottom>
         <template v-slot:activator="{ on }">
           <v-btn v-on="on" text icon>
-            <v-avatar size="28px">
-              <img :src="`/images/folks/avatar/${authUser.folk.avatar}`" alt="Avatar" />
+            <v-avatar size="28px"> 
+              <img :src="require('@/assets/folks/account.svg')" alt="Avatar" />
+              <!-- <img :src="`/images/folks/avatar/${authUser.folk.avatar}`" alt="Avatar" /> -->
             </v-avatar>
           </v-btn>
         </template>
