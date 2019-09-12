@@ -3,8 +3,8 @@
     <app-slider></app-slider>
     <app-missions></app-missions>
     <app-parralax></app-parralax>
-    <app-companies></app-companies>
     <app-partners></app-partners>
+    <app-companies></app-companies>
     <app-featured></app-featured>
     <app-map></app-map>
 
