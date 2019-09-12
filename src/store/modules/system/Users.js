@@ -19,7 +19,7 @@ export default ({
 
     actions: {
         getUsers(context) {
-            this.$axios.get('/users').then(function (response) {
+            axios.get('/users').then(function (response) {
                 context.commit('updateUsers', response.data.data);
             });
         },

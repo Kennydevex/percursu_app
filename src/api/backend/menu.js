@@ -34,61 +34,61 @@ const Menu = [
         ]
     },
 
-    // {
-    //     header: 'CMS'
-    // },
-    // {
-    //     title: 'Conteúdos',
-    //     group: 'cms',
-    //     icon: 'mdi-application',
-    //     role: 'publisher',
-    //     items: [{
-    //         name: 'list-posts',
-    //         title: 'Publicações',
-    //         component: 'list-posts',
-    //         role: 'publisher'
-    //     },
-    //     {
-    //         name: 'list-categories',
-    //         title: 'Categorias',
-    //         component: 'list-categories',
-    //         role: 'publisher'
-    //     }, {
-    //         name: 'list-tags',
-    //         title: 'Marcadores',
-    //         component: 'list-tags',
-    //         role: 'publisher'
-    //     },
-    //     ]
-    // },
-    // {
-    //     header: 'Sistema'
-    // }, 
-    // {
-    //     title: 'Sistema',
-    //     group: 'system',
-    //     icon: 'mdi-tune',
-    //     role: 'admin',
-    //     items: [{
-    //         name: 'list-users',
-    //         title: 'Utilizadores',
-    //         component: 'list-users',
-    //         role: 'admin'
-    //     }, {
-    //         name: 'list-roles',
-    //         title: 'Funções',
-    //         component: 'list-roles',
-    //         role: 'super-admin'
-    //     }, {
-    //         name: 'list-permissions',
-    //         title: 'Permissóes',
-    //         component: 'list-permissions',
-    //         role: 'super-admin'
-    //     },]
-    // },
-    // {
-    //     divider: true
-    // },
+    {
+        header: 'CMS'
+    },
+    {
+        title: 'Conteúdos',
+        group: 'cms',
+        icon: 'mdi-application',
+        role: 'publisher',
+        items: [{
+            name: 'list-posts',
+            title: 'Publicações',
+            component: 'list-posts',
+            role: 'publisher'
+        },
+        {
+            name: 'list-categories',
+            title: 'Categorias',
+            component: 'list-categories',
+            role: 'publisher'
+        }, {
+            name: 'list-tags',
+            title: 'Marcadores',
+            component: 'list-tags',
+            role: 'publisher'
+        },
+        ]
+    },
+    {
+        header: 'Sistema'
+    }, 
+    {
+        title: 'Sistema',
+        group: 'system',
+        icon: 'mdi-tune',
+        role: 'admin',
+        items: [{
+            name: 'list-users',
+            title: 'Utilizadores',
+            component: 'list-users',
+            role: 'admin'
+        }, {
+            name: 'list-roles',
+            title: 'Funções',
+            component: 'list-roles',
+            role: 'super-admin'
+        }, {
+            name: 'list-permissions',
+            title: 'Permissóes',
+            component: 'list-permissions',
+            role: 'super-admin'
+        },]
+    },
+    {
+        divider: true
+    },
     // {
     //     header: 'Parâmetros e Suporte'
     // }, 

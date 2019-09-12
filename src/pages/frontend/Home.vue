@@ -3,6 +3,8 @@
     <app-slider></app-slider>
     <app-missions></app-missions>
     <app-parralax></app-parralax>
+    <app-companies></app-companies>
+    <app-partners></app-partners>
     <app-featured></app-featured>
     <app-map></app-map>
 
@@ -49,6 +51,8 @@
 import AppSlider from "@/components/frontend/partials/AppSlider";
 import AppParralax from "@/components/frontend/partials/AppParralax";
 import AppFeatured from "@/components/frontend/partials/AppFeatured";
+import AppCompanies from "@/components/frontend/partials/AppCompanies";
+import AppPartners from "@/components/frontend/partials/AppPartners";
 import AppMissions from "@/components/frontend/partials/AppMissions";
 import AppMap from "@/components/frontend/partials/AppMap";
 export default {
@@ -63,7 +67,9 @@ export default {
     AppMissions,
     AppMap,
     AppParralax,
-    AppFeatured
+    AppFeatured,
+    AppCompanies,
+    AppPartners,
   }
 };
 </script>

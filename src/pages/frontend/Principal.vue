@@ -77,7 +77,10 @@
             <template v-slot:activator="{ on }">
               <v-btn v-on="on" text>
                 <v-avatar size="28px">
-                  <img :src="require('../../assets/folks/account.svg')" alt="Avatar" />
+                  <img
+                    :src="`http://localhost:8000/images/folks/avatar/${authUser.folk.avatar}`"
+                    alt="Avatar"
+                  />
                 </v-avatar>
               </v-btn>
             </template>
@@ -108,16 +111,20 @@
     <v-content>
       <router-view></router-view>
     </v-content>
+    <app-footer></app-footer>
   </v-app>
 </template>
 
 <script>
+import AppFooter from "@/components/frontend/partials/Footer";
+import { getPartnersDatas } from "@/mixins/HelpersData";
+
 export default {
+  mixins: [getPartnersDatas],
   name: "principal",
   data() {
     return {
       drawer: false,
-
       items: [
         {
           icon: "mdi-account-card-details",
@@ -147,8 +154,27 @@ export default {
     };
   },
 
+  created() {
+    this.getActivedPartners();
+  },
+
+  components: {
+    AppFooter
+  },
+
   methods: {
     teste() {},
+
+    location() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          console.log(position);
+        });
+      } else {
+        console.log("Não suporta maps");
+      }
+    },
+
     logout: function() {
       this.$store.commit("logout");
       this.$router.push("/");

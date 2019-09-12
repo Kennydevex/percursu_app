@@ -4,13 +4,12 @@
       <v-flex xs12>
         <v-card>
           <v-card-text class="ma-0 pa-0">
-            <v-subheader>Criar um percursu (Curriculum)</v-subheader>
-
             <v-stepper v-model="step" non-linear vertical>
               <v-stepper-step
                 :complete="step > 1"
                 step="1"
                 :rules="[() => formErrors.partner.length == 0]"
+                editable
               >
                 Dados pessoais
                 <small>Configure as suas informações pessoais</small>
@@ -27,72 +26,8 @@
                         dismissible
                       >Campos preenchidos com informações da sua conta!</v-alert>
                     </v-flex>
+                    <v-flex xs12></v-flex>
                   </v-layout>
-                  <v-layout row wrap pl-5 v-if="_is('admin') || _is('super-admin')">
-                    <v-flex xs12 md4>
-                      <v-checkbox
-                        @change="checkAuthUser()"
-                        label="Este curriculum não é meu!!!"
-                        v-model="formData.not_mine"
-                      ></v-checkbox>
-                    </v-flex>
-                    <v-flex xs12 md8 v-if="formData.not_mine">
-                      <v-switch
-                        @change="checkAuthUser()"
-                        v-model="formData.new"
-                        label="Criar Novo Utilizador"
-                        color="indigo"
-                        value
-                        input-value="true"
-                        hide-details
-                      ></v-switch>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout row wrap v-if="formData.not_mine && !formData.new">
-                    <v-flex xs12 md4>
-                      <v-select
-                        @change="getUserByUsername(formData.user.username)"
-                        :items="users"
-                        item-text="username"
-                        v-model="formData.user.username"
-                        label="A quem pertence este curriculum?"
-                      ></v-select>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout row wrap v-if="formData.not_mine && formData.new">
-                    <v-flex xs12>
-                      <v-subheader>Para um novo utilizador preencha registo de autenticação</v-subheader>
-                    </v-flex>
-                    <v-flex xs12 md4>
-                      <v-text-field
-                        outlined
-                        name="username"
-                        label="Utilizador"
-                        v-model="formData.user.username"
-                      ></v-text-field>
-                    </v-flex>
-
-                    <v-flex xs12 md4>
-                      <v-text-field
-                        outlined
-                        name="email"
-                        label="Email"
-                        v-model="formData.user.email"
-                        hint="Este email é utilizado para identificar utilizador e autenticar no sistema"
-                      ></v-text-field>
-                    </v-flex>
-
-                    <v-flex xs12 md4>
-                      <v-text-field
-                        outlined
-                        name="password"
-                        label="Palavra Passe"
-                        v-model="formData.user.password"
-                        type="password"
-                      ></v-text-field>
-                    </v-flex>
-                  </v-layout>
-                  <v-divider></v-divider>
                   <v-layout row wrap>
                     <v-flex xs12 sm6 md4>
                       <v-text-field
@@ -132,6 +67,7 @@
                         :nudge-right="40"
                         transition="scale-transition"
                         offset-y
+                        full-width
                         min-width="290px"
                       >
                         <template v-slot:activator="{ on }">
@@ -226,6 +162,7 @@
                 :complete="step > 2"
                 step="2"
                 :rules="[() => formErrors.contacts.length == 0]"
+                editable
               >
                 Informações de Contacto
                 <small>Introduza os seus contactos, bem com a sua participação na Web</small>
@@ -572,6 +509,7 @@
                 :complete="step > 3"
                 step="3"
                 :rules="[() =>formErrors.address.length == 0]"
+                editable
               >
                 Endereço e Localização Geográfica
                 <small>Configure o seu endereço</small>
@@ -647,6 +585,7 @@
                 :complete="step > 4"
                 step="4"
                 :rules="[() =>formErrors.formation.length == 0]"
+                editable
               >
                 Formações realizadas
                 <small>Apresente as suas formações acadêmicas e não só</small>
@@ -690,14 +629,6 @@
                                   :error-messages="errors.collect('form-step-4.frm-institution'+k)"
                                 ></v-text-field>
                               </v-flex>
-                              <!-- <v-flex xs12 md2>
-                            <v-select
-                              outlined
-                              :items="levels"
-                              v-model="formation.level"
-                              label="Nível da formação"
-                            ></v-select>
-                              </v-flex>-->
 
                               <v-flex xs12 md6>
                                 <v-text-field
@@ -739,6 +670,7 @@
                                   :nudge-right="40"
                                   transition="scale-transition"
                                   offset-y
+                                  full-width
                                   min-width="290px"
                                 >
                                   <template v-slot:activator="{ on }">
@@ -771,35 +703,6 @@
                                   v-model="valTo"
                                   type="text"
                                 />
-                                <!-- <v-menu
-                              :disabled="formation.ongoing"
-                              :close-on-content-click="false"
-                              v-model="to_date_menu[k]"
-                              :nudge-right="40"
-                              lazy
-                              transition="scale-transition"
-                              offset-y
-                              min-width="290px"
-                            >
-                              <v-text-field
-                                outlined
-                                :disabled="formation.ongoing"
-                                name="to"
-                                slot="activator"
-                                label="Conclusão"
-                                prepend-inner-icon="mdi-calendar"
-                                readonly
-                                :value="formation.to"
-                                v-validate="'date_format:yyyy-MM|before:valTo'"
-                                :data-vv-as="'form-step-4.frm-to'+k"
-                                :error-messages="errors.collect('form-step-4.frm-to'+k)"
-                              ></v-text-field>
-                              <v-date-picker
-                                v-model="formation.to"
-                                @input="$set(to_date_menu, k, false)"
-                                locale="pt-pt"
-                              ></v-date-picker>
-                                </v-menu>-->
 
                                 <v-menu
                                   :disabled="formation.ongoing"
@@ -808,6 +711,7 @@
                                   :nudge-right="40"
                                   transition="scale-transition"
                                   offset-y
+                                  full-width
                                   min-width="290px"
                                 >
                                   <template v-slot:activator="{ on }">
@@ -908,6 +812,7 @@
                 :complete="step > 5"
                 step="5"
                 :rules="[() =>formErrors.experience.length == 0]"
+                editable
               >
                 Experiencias Profissionais
                 <small>Apresenete as suas experiencias no mercado de trabalho</small>
@@ -952,43 +857,6 @@
                                 ></v-text-field>
                               </v-flex>
 
-                              <!-- <v-flex xs12 md3>
-                            <input
-                              style="display:none"
-                              name="from_ex_field_target"
-                              ref="valFromEx"
-                              v-model="valFromEx"
-                              type="text"
-                            />
-                            <v-menu
-                              :close-on-content-click="false"
-                              v-model="from_ex_date_menu[k]"
-                              :nudge-right="40"
-                              lazy
-                              transition="scale-transition"
-                              offset-y
-                              min-width="290px"
-                            >
-                              <v-text-field
-                                outlined
-                                name="exp-from"
-                                slot="activator"
-                                label="Início"
-                                prepend-inner-icon="mdi-calendar"
-                                readonly
-                                :value="experience.from"
-                                v-validate="'date_format:yyyy-MM|before:valFromEx'"
-                                :data-vv-as="'form-step-5.exp-from'+k"
-                                :error-messages="errors.collect('form-step-5.exp-from'+k)"
-                              ></v-text-field>
-                              <v-date-picker
-                                v-model="experience.from"
-                                @input="$set(from_ex_date_menu, k, false)"
-                                locale="pt-pt"
-                              ></v-date-picker>
-                            </v-menu>
-                              </v-flex>-->
-
                               <v-flex xs12 md3>
                                 <input
                                   style="display:none"
@@ -1003,6 +871,7 @@
                                   :nudge-right="40"
                                   transition="scale-transition"
                                   offset-y
+                                  full-width
                                   min-width="290px"
                                 >
                                   <template v-slot:activator="{ on }">
@@ -1024,45 +893,6 @@
                                 </v-menu>
                               </v-flex>
 
-                              <!-- <v-flex xs12 md3>
-                            <input
-                              style="display:none"
-                              name="to_ex_field_target"
-                              ref="valToEx"
-                              v-model="valToEx"
-                              type="text"
-                            />
-                            <v-menu
-                              :disabled="experience.ongoing"
-                              :close-on-content-click="false"
-                              v-model="to_ex_date_menu[k]"
-                              :nudge-right="40"
-                              lazy
-                              transition="scale-transition"
-                              offset-y
-                              min-width="290px"
-                            >
-                              <v-text-field
-                                outlined
-                                :disabled="experience.ongoing"
-                                name="exp-to"
-                                slot="activator"
-                                label="Conclusão"
-                                prepend-inner-icon="mdi-calendar"
-                                readonly
-                                :value="experience.to"
-                                v-validate="'date_format:yyyy-MM|before:valToEx'"
-                                :data-vv-as="'form-step-5.exp-to'+k"
-                                :error-messages="errors.collect('form-step-5.exp-to'+k)"
-                              ></v-text-field>
-                              <v-date-picker
-                                v-model="experience.to"
-                                @input="$set(to_ex_date_menu, k, false)"
-                                locale="pt-pt"
-                              ></v-date-picker>
-                            </v-menu>
-                              </v-flex>-->
-
                               <v-flex xs12 md3>
                                 <input
                                   style="display:none"
@@ -1078,6 +908,7 @@
                                   :nudge-right="40"
                                   transition="scale-transition"
                                   offset-y
+                                  full-width
                                   min-width="290px"
                                 >
                                   <template v-slot:activator="{ on }">
@@ -1177,6 +1008,7 @@
                 :complete="step > 6"
                 step="6"
                 :rules="[() =>formErrors.skill.length == 0 && ! formErrors.charge.name]"
+                editable
               >
                 Habilidades e Preferencias
                 <small>Liste as suas habilidades que julgas relevantes (Linguisticas e Digitais)</small>
@@ -1295,10 +1127,10 @@
                 </v-form>
               </v-stepper-content>
               <!-- ====================================== -->
-              <v-stepper-step
-                step="7"
-                :rules="[() =>formErrors.final.length == 0]"
-                editable
+              <v-stepper-step 
+              step="7" 
+              :rules="[() =>formErrors.final.length == 0]"
+              editable
               >Finalização</v-stepper-step>
               <v-stepper-content step="7">
                 <v-layout column>
@@ -1311,24 +1143,18 @@
                   <v-flex xs12 md6>
                     <small>Termo de utilização</small>
                     <v-checkbox
-                      label="*Aceitar os termos de utilização e a nossa política de privacidade"
+                      label="*Aceitar o termo de utilização e a nossa política de privacidade"
                     ></v-checkbox>
                     <v-checkbox
                       label="Quero receber notificações sobre publicação e ofertas de empregos e formações! (Opcional)"
                     ></v-checkbox>
-                  </v-flex>
-
-                  <v-flex xs12>
-                    <p class="warning--text">
-                      <v-icon color="warning">mdi-alert</v-icon>Ao enviar os dados com sucesso a sua conta será reniniciada. Por isso tens de entrar novamente...
-                    </p>
                   </v-flex>
                 </v-layout>
 
                 <v-layout row wrap class="my-3">
                   <v-flex xs12>
                     <v-btn text @click.native="prevStep()" rounded>Anterior</v-btn>
-                    <v-btn color="primary" rounded @click="addPartner()" :loading="sending">Enviar</v-btn>
+                    <v-btn color="primary" rounded @click="formAction()" :loading="sending">{{actionText}}</v-btn>
                     <v-btn text @click.native="cancel()" rounded>Sair</v-btn>
                   </v-flex>
                 </v-layout>
@@ -1340,155 +1166,135 @@
     </v-layout>
   </v-container>
 </template>
- 
-<script>
-import validateDictionary from "@/helpers/api/validateDictionary";
-import moment from "moment";
-import { multFormData } from "@/mixins/HandleMultFormData";
 
-import { getChargesDatas, getUsersDatas } from "@/mixins/HelpersData";
-import FileUpload from "@/components/backend/partials/forms/FileUpload";
-import { flashAlert } from "@/mixins/AppAlerts";
+<script>
+import validateDictionary from "@helpers/api/validateDictionary";
+import moment from "moment";
+import { multFormData } from "@mixins/HandleMultFormData";
+
+import { getChargesDatas } from "@mixins/HelpersData";
+import FileUpload from "@pback/forms/FileUpload";
+import { flashAlert } from "@mixins/AppAlerts";
 
 export default {
-  mixins: [multFormData, getChargesDatas, getUsersDatas, flashAlert],
-  name: "",
+  props: ['actionText', 'sending'],
+  mixins: [multFormData, getChargesDatas, flashAlert],
+  name: "partner-form",
   components: {
     FileUpload
   },
 
-  data() {
-    return {
-      sending: false,
-      avatarRules: [
-        value =>
-          !value ||
-          value.size < 1000000 ||
-          "Imagem de perfil não pode ter um tamanho superior a 1MB"
-      ],
-      coverRules: [
-        value =>
-          !value ||
-          value.size < 2000000 ||
-          "Imagem de capa não pode ter um tamanho superior a 2MB"
-      ],
-      user: [],
-      myusers: [],
-      formErrors: {
-        charge: [],
-        partner: [],
-        experience: [],
-        formation: [],
-        skill: [],
-        address: [],
-        contacts: [],
-        final: []
+  data: () => ({
+    avatarRules: [
+      value =>
+        !value ||
+        value.size < 1000000 ||
+        "Imagem de perfil não pode ter um tamanho superior a 1MB"
+    ],
+    coverRules: [
+      value =>
+        !value ||
+        value.size < 2000000 ||
+        "Imagem de capa não pode ter um tamanho superior a 2MB"
+    ],
+    formErrors: {
+      charge: [],
+      partner: [],
+      experience: [],
+      formation: [],
+      skill: [],
+      address: [],
+      contacts: [],
+      final: []
+    },
+    repeatedPhone: false,
+    repeatedEmail: false,
+    repeatedSite: false,
+    repeatedSocial: false,
+    step: 1,
+    addingCharge: false,
+    startDateMenu: false,
+    // from_date_menu: false,
+    from_date_menu: {},
+    from_ex_date_menu: {},
+    to_date_menu: {},
+    to_ex_date_menu: {},
+    birthdate_menu: false,
+    charge: { name: "", description: "" },
+    formData: {
+      charges: [],
+      status: false,
+      folk: {
+        name: "",
+        lastname: "",
+        gender: "",
+        birthdate: "",
+        ic: "",
+        nif: "",
+        avatar: "",
+        cover: "",
+        phones: [{ number: "", type: "" }],
+        couriers: [{ email: "", type: "" }],
+        address: {
+          country: "Cabo Verde",
+          city: "",
+          street: "",
+          postcode: "",
+          location: { lat: "22", lng: "29" }
+        }
       },
-      repeatedPhone: false,
-      repeatedEmail: false,
-      repeatedSite: false,
-      repeatedSocial: false,
-      step: 1,
-      addingCharge: false,
-      startDateMenu: false,
-      // from_date_menu: false,
-      from_date_menu: {},
-      from_ex_date_menu: {},
-      to_date_menu: {},
-      to_ex_date_menu: {},
-      birthdate_menu: false,
-      charge: { name: "", description: "" },
-      formData: {
-        not_mine: false,
-        new: false,
-        charges: [],
-        status: false,
-        featured: false,
-        promo: false,
-        user: {
-          username: "",
-          password: "",
-          email: ""
-        },
-        folk: {
-          name: "",
-          lastname: "",
-          gender: "",
-          birthdate: "",
-          ic: "",
-          nif: "",
-          avatar: "",
-          cover: "",
-          phones: [{ number: "", type: "" }],
-          couriers: [{ email: "", type: "" }],
-          address: {
-            country: "Cabo Verde",
-            city: "",
-            street: "",
-            postcode: "",
-            location: { lat: "22", lng: "29" }
-          }
-        },
-        experiences: [
-          {
-            task: "",
-            from: new Date().toISOString().substr(0, 10),
-            to: new Date().toISOString().substr(0, 10),
-            ongoing: false,
-            employer: "",
-            responsibility: "",
-            attachment: ""
-          }
-        ],
-        formations: [
-          {
-            designation: "",
-            from: new Date().toISOString().substr(0, 10),
-            to: new Date().toISOString().substr(0, 10),
-            ongoing: false,
-            institution: "",
-            subjects: "",
-            level: "",
-            country: "",
-            city: "",
-            attachment: ""
-          }
-        ],
-
-        skills: [{ name: "", description: "" }],
-        sites: [],
-        socials: []
-      },
-      contactsType: [
-        { id: 1, name: "Pessoal" },
-        { id: 2, name: "Casa" },
-        { id: 3, name: "Trabalho" }
+      experiences: [
+        {
+          task: "",
+          from: new Date().toISOString().substr(0, 10),
+          to: new Date().toISOString().substr(0, 10),
+          ongoing: false,
+          employer: "",
+          responsibility: "",
+          attachment: ""
+        }
+      ],
+      formations: [
+        {
+          designation: "",
+          from: new Date().toISOString().substr(0, 10),
+          to: new Date().toISOString().substr(0, 10),
+          ongoing: false,
+          institution: "",
+          subjects: "",
+          level: "",
+          country: "",
+          city: "",
+          attachment: ""
+        }
       ],
 
-      socialMedias: [
-        "GitHub",
-        "Linkedin",
-        "Twitter",
-        "Google+",
-        "Facebook",
-        "Reddit"
-      ],
-      levels: [1, 2, 3, 4, 5],
-      dictionary: validateDictionary,
-      selectedFile: null
-    };
-  },
+      skills: [{ name: "", description: "" }],
+      sites: [],
+      socials: []
+    },
+    contactsType: [
+      { id: 1, name: "Pessoal" },
+      { id: 2, name: "Casa" },
+      { id: 3, name: "Trabalho" }
+    ],
 
-  // data: () => ({
-
-  // }),
+    socialMedias: [
+      "GitHub",
+      "Linkedin",
+      "Twitter",
+      "Google+",
+      "Facebook",
+      "Reddit"
+    ],
+    levels: [1, 2, 3, 4, 5],
+    dictionary: validateDictionary,
+    selectedFile: null
+  }),
 
   created() {
-    this.getUserLocation();
     this.checkAuthUser();
     this.getCharges();
-    this.getUsersIfHasPermissions();
-    this.getUsersWithoutPartner();
   },
 
   mounted() {
@@ -1509,19 +1315,19 @@ export default {
     },
 
     valFrom() {
-      return moment(new Date().toISOString().substr(0, 10)).format("DD/MM/YYYY");
+      return moment(new Date().toISOString().substr(0, 10)).format("YYYY-MM");
     },
 
     valTo() {
-      return moment(new Date().toISOString().substr(0, 10)).format("DD/MM/YYYY");
+      return moment(new Date().toISOString().substr(0, 10)).format("YYYY-MM");
     },
 
     valFromEx() {
-      return moment(new Date().toISOString().substr(0, 10)).format("DD/MM/YYYY");
+      return moment(new Date().toISOString().substr(0, 10)).format("YYYY-MM");
     },
 
     valToEx() {
-      return moment(new Date().toISOString().substr(0, 10)).format("DD/MM/YYYY");
+      return moment(new Date().toISOString().substr(0, 10)).format("YYYY-MM");
     },
 
     formattingBirthdate() {
@@ -1532,25 +1338,6 @@ export default {
   },
 
   methods: {
-    getUserByUsername: function(username) {
-      if (this.users.length > 0) {
-        this.user = this.users.find(user => user.username == username);
-      }
-      this.formData.folk.name = this.user.folk.name;
-      this.formData.folk.lastname = this.user.folk.lastname;
-      this.formData.folk.birthdate = this.user.folk.birthdate;
-      this.formData.folk.ic = this.user.folk.ic;
-      this.formData.folk.gender = this.user.folk.gender;
-      this.formData.folk.nif = this.user.folk.nif;
-      this.formData.folk.avatar = this.user.folk.avatar;
-      this.formData.folk.cover = this.user.folk.cover;
-    },
-    getUsersIfHasPermissions() {
-      if (this._is("admin") || this._is("super-admin")) {
-        this.getUsers();
-      }
-    },
-
     uploadAvatar(file) {
       this.formData.folk.avatar = file;
     },
@@ -1580,56 +1367,13 @@ export default {
       this.formData.experiences[k].to = new Date().toISOString().substr(0, 10);
     },
 
-    getUserLocation() {
-      // navigator.geolocation.getCurrentPosition(function (info) {
-      //   this.formData.location.lat = info.coords.lat;
-      //   this.formData.location.lng = info.coords.lng;
-      // })
-      console.log("Obetr enderço do utilizador, a implementar...");
-    },
-
-    addPartner() {
-      this.sending = true;
-      axios
-        .post("/partners", this.$data.formData)
-        .then(response => {
-          this.sending = false;
-          if (response.data.exist) {
-            this.feedback(
-              "warning",
-              response.data.msg,
-              6000,
-              true,
-              bottom - end
-            );
-            this.$router.go(-1);
-
-            return;
-          }
-          this.feedback(
-            "warning",
-            "A sua sessão será iniciada",
-            3000,
-            true,
-            "bottom-end"
-          );
-          this.feedback("success", response.data.msg, 3000, true, "top");
-          window.getApp.$emit("APP_UPDATE_ALL_PARTNERS_DATA");
-          if (this.formData.not_mine) {
-            this.$router.push({ name: "list-partners" });
-            return;
-          }
-          this.$router.go(-1);
-          this.logout();
-        })
-        .catch(err => {
-          this.sending = false;
-        });
+    formAction() {
+      this.$emit("formAction", this.$data.formData);
     },
 
     addCharge() {
       axios
-        .post("/charges", this.$data.charge)
+        .post("/api/v1/percursu/charges", this.$data.charge)
         .then(response => {
           this.handleAddCharge();
           this.getUpdatedCharges();
@@ -1639,35 +1383,20 @@ export default {
         });
     },
 
-    getUsersWithoutPartner() {
-      axios
-        .get("/usersWithoutPartner")
-        .then(response => {
-          this.myusers = response.data.data;
-        })
-        .catch(err => {});
-    },
-
     cancel: function() {
-      this.$router.go(-1);
-      // this.$router.push({ name: "list-partners" });
+      this.$router.push({ name: "list-partners" });
     },
 
     nextStep(scope) {
       // this.$validator.validateAll(scope).then(result => {
       //   if (result) {
-      this.step++;
-      //   }
-      // });
+          this.step++;
+    //     }
+    //   });
     },
 
     prevStep: function() {
       this.step--;
-    },
-
-    logout: function() {
-      this.$store.commit("logout");
-      this.$router.push("/");
     }
   }
 };

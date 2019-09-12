@@ -18,6 +18,17 @@
                     <small>Autenticar</small>
                   </div>
 
+                   <v-flex xs12>
+                    <v-alert
+                      :value="loginError"
+                      color="error"
+                      icon="mdi-alert"
+                      outlined
+                      dismissible
+                      transition="scale-transition"
+                    >{{loginError}}</v-alert>
+                  </v-flex>
+
                   <v-form>
                     <v-container grid-list-sm ma-0 pa-0>
                       <v-layout row wrap>
@@ -76,7 +87,6 @@
                   </v-btn>
 
                   <v-btn @click="authenticate()" rounded block color="primary">Entrar</v-btn>
-
                 </div>
               </v-card>
             </v-flex>
@@ -90,7 +100,11 @@
 <script>
 import { login } from "@/helpers/authentication";
 import validateDictionary from "@/helpers/api/validateDictionary";
+import { flashAlert } from "@/mixins/AppAlerts";
+
 export default {
+  mixins: [flashAlert],
+
   data() {
     return {
       sending: false,
@@ -109,8 +123,8 @@ export default {
       return this.$store.getters.authError;
     }
   },
- 
-   methods: {
+
+  methods: {
     togglePassIcon() {
       this.passIcon = !this.passIcon;
     },
@@ -121,7 +135,13 @@ export default {
           this.$store.dispatch("login");
           login(this.$data.formData)
             .then(response => {
-            //   this.feedback("success", 'Autenticação efetuada com sucesso. Obrigado!', 5000, true, 'bottom-left');
+              this.feedback(
+                "success",
+                "Autenticação efetuada com sucesso. Obrigado!",
+                5000,
+                true,
+                "bottom-left"
+              );
               this.$store.commit("loginSuccess", response);
               this.$router.push({ path: "/" });
               this.sending = false;
