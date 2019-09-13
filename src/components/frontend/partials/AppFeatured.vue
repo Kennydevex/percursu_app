@@ -1,5 +1,4 @@
 <template>
-<div class="white">
   <v-container grid-list-xs>
     <v-row>
       <v-col cols="12">
@@ -384,7 +383,6 @@
       </v-bottom-sheet>
     </div>-->
   </v-container>
-  </div>
 </template>
 <script>
 // import {categoriesTags} from '@mixins/CategoriesTags'

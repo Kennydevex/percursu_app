@@ -22,7 +22,7 @@ const Menu = [
         role: 'manager',
         items: [{
             name: 'list-partners',
-            title: 'Parceiros',
+            title: 'Curriculum',
             component: 'list-partners',
             // role: 'manager'
         }, {

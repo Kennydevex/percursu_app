@@ -78,7 +78,7 @@
               <v-btn v-on="on" text>
                 <v-avatar size="28px">
                   <img
-                    :src="`http://localhost:8000/images/folks/avatar/${authUser.folk.avatar}`"
+                    :src="`http://http://104.238.165.7/images/folks/avatar/${authUser.folk.avatar}`"
                     alt="Avatar"
                   />
                 </v-avatar>
@@ -131,7 +131,10 @@ export default {
           href: "#",
           title: "Meu Perfil",
           click: e => {
-            this.$router.push({ name: "front-perfil" });
+            this.$router.push({
+              name: "app-perfil",
+              params: { username: this.authUser.username }
+            });
           }
         },
         {

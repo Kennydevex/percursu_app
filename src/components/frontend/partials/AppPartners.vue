@@ -1,10 +1,9 @@
 <template>
-  <div class="white">
     <v-container grid-list-xs>
       <v-row>
         <v-col cols="12">
           <v-row align="center" justify="center">
-            <h2 class="text-center font-weight-thin">Curriculums</h2>
+            <h2 class="text-center font-weight-thin">Destaques</h2>
           </v-row>
         </v-col>
       </v-row>
@@ -142,7 +141,6 @@
         </v-col>
       </v-row>
     </v-container>
-  </div>
 </template>
 <script>
 // import {categoriesTags} from '@mixins/CategoriesTags'

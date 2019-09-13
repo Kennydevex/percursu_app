@@ -1,12 +1,26 @@
 <template>
   <div>
-    <app-slider></app-slider>
-    <app-missions></app-missions>
-    <app-parralax></app-parralax>
-    <app-partners></app-partners>
-    <app-companies></app-companies>
-    <app-featured></app-featured>
-    <app-map></app-map>
+    <section>
+      <app-slider></app-slider>
+    </section>
+    <section>
+      <app-missions></app-missions>
+    </section>
+    <section>
+      <app-parralax></app-parralax>
+    </section>
+    <section class="white">
+      <app-partners></app-partners>
+    </section>
+    <section>
+      <app-companies></app-companies>
+    </section>
+    <section class="white">
+      <app-featured></app-featured>
+    </section>
+    <section>
+      <app-map></app-map>
+    </section>
 
     <template v-if="authUser">
       <v-btn
@@ -56,7 +70,7 @@ import AppPartners from "@/components/frontend/partials/AppPartners";
 import AppMissions from "@/components/frontend/partials/AppMissions";
 import AppMap from "@/components/frontend/partials/AppMap";
 export default {
-  data() { 
+  data() {
     return {
       fab: false
     };
@@ -69,7 +83,7 @@ export default {
     AppParralax,
     AppFeatured,
     AppCompanies,
-    AppPartners,
+    AppPartners
   }
 };
 </script>

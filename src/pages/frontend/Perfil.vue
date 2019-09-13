@@ -1,0 +1,15 @@
+<template>
+    <div>
+        <!-- <perfil/> -->
+        Perfil
+    </div>
+</template>
+
+<script>
+// import Perfil from '@pback/Perfil.vue'
+export default {
+    components: {
+        // Perfil,
+    },
+}
+</script>

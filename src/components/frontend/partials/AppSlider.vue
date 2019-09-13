@@ -11,7 +11,7 @@
             <div
               class="appCard-header ani"
               swiper-animate-delay="1s"
-              swiper-animate-effect="slideInRight"
+              swiper-animate-effect="fadeIn"
               swiper-animate-duration="2s"
             >
               <div
@@ -27,19 +27,18 @@
               swiper-animate-duration="2s"
               inset
             ></v-divider>
-            <div
-              swiper-animate-delay="1s"
-              swiper-animate-effect="rotateInDownRight"
-              swiper-animate-duration="2s"
-              class="header-divider ani ml-5"
-            ></div>
 
-            <div class="appCard-content">
-              <div
-                class="divider ani inset"
-                swiper-animate-effect="rotateInUpRight"
-                swiper-animate-duration="4s"
-              ></div>
+            <div
+              class="divider ani inset"
+              swiper-animate-effect="rotateInUpRight"
+              swiper-animate-duration="4s"
+            ></div>
+            <div
+              class="appCard-content ani"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="slideInRight"
+              swiper-animate-duration="2s"
+            >
               <p
                 class="font-weight-medium"
               >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.</p>
@@ -64,7 +63,7 @@
             <div
               class="appCard-header ani"
               swiper-animate-delay="1s"
-              swiper-animate-effect="slideInRight"
+              swiper-animate-effect="fadeIn"
               swiper-animate-duration="2s"
             >
               <div
@@ -80,18 +79,18 @@
               inset
             ></v-divider>
             <div
-              swiper-animate-delay="1s"
-              swiper-animate-effect="rotateInDownRight"
-              swiper-animate-duration="2s"
-              class="header-divider ani ml-5"
+              class="divider ani inset"
+              swiper-animate-effect="rotateInUpRight"
+              swiper-animate-duration="4s"
             ></div>
 
-            <div class="appCard-content">
-              <div
-                class="divider ani inset"
-                swiper-animate-effect="rotateInUpRight"
-                swiper-animate-duration="4s"
-              ></div>
+            <div
+              class="appCard-content ani"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="slideInRight"
+              swiper-animate-duration="2s"
+            >
+            
               <p
                 class="font-weight-medium"
               >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.</p>
@@ -239,7 +238,7 @@ $screen-md: 600px;
     }
   }
   &-content {
-    width: 85%;
+    width: 100%;
     height: auto;
     padding: 40px;
     display: block;
@@ -250,8 +249,7 @@ $screen-md: 600px;
     background: #004d4d;
     @include xs {
       padding: 20px;
-    background: transparent;
-
+      background: transparent;
     }
     @include sm {
       padding: 20px;
@@ -264,6 +262,5 @@ $screen-md: 600px;
     bottom: 10%;
     border-left: 1px solid #d3f3f3;
   }
- 
 }
 </style>

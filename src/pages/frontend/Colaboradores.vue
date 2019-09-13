@@ -8,7 +8,7 @@
 
     <v-layout row wrap>
       <v-flex xs12>
-        <featured-partners />
+        <app-partners></app-partners>
       </v-flex>
     </v-layout>
 
@@ -33,55 +33,30 @@
             <v-layout row wrap>
               <template v-for="(partner, index) in activedPartners">
                 <v-flex xs12 md3 :key="index">
-                  <!-- <v-card>
-                    <v-img class="mx-2" :src="`/images/geral/slide1.jpg`" height="200px" contain></v-img>
-
-                    <v-card-title primary-title>
-                      <div>
-                        <h3 class="headline mb-0">{{partner.folk.name}}</h3>
-                        <div>description</div>
-                      </div>
-                    </v-card-title>
-                    <v-card-actions>
-                      <v-spacer></v-spacer>
-                      <v-btn
-                        text
-                        outlined
-                        small
-                        rounded
-                        color="primary"
-                        @click="onViewPartner(partner.folk.user.username)"
-                      >Ver</v-btn>
-                      <v-btn text outlined small rounded color="primary">text</v-btn>
-                    </v-card-actions>
-                  </v-card>-->
-
                   <v-card>
                     <v-list-item>
-                      <v-list-item-avatar color="grey"></v-list-item-avatar>
+                      <v-list-item-avatar color="grey" size="50" :src="`http://localhost:8000/images/folks/avatar/${partner.folk.avatar}`"></v-list-item-avatar>
                       <v-list-item-content>
-                        <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
+                        <v-list-item-title class="subtitle-2">{{partner.folk.name}} {{partner.folk.lastname}}</v-list-item-title>
                         <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
-
-                    <v-img :src="`/images/geral/slide1.jpg`" height="194"></v-img>
-
-                    <v-card-text>Visit ten places on our planet that are undergoing the biggest changes today.</v-card-text>
-
+                    <v-img :src="`http://localhost:8000/images/folks/avatar/${partner.folk.cover}`" height="93"></v-img>
                     <v-card-actions>
                       <v-btn
+                        small
                         @click="onViewPartner(partner.folk.user.username)"
                         text
-                        color="deep-purple accent-4"
+                        rounded 
+                        outlined
+                        color="primary"
                       >Ver</v-btn>
-                      <!-- <v-btn text color="deep-purple accent-4">Bookmark</v-btn> -->
                       <v-spacer></v-spacer>
-                      <v-btn icon>
-                        <v-icon>mdi-heart</v-icon>
+                      <v-btn icon small>
+                        <v-icon small>mdi-heart</v-icon>
                       </v-btn>
-                      <v-btn icon>
-                        <v-icon>mdi-share-variant</v-icon>
+                      <v-btn icon small>
+                        <v-icon small>mdi-share-variant</v-icon>
                       </v-btn>
                     </v-card-actions>
                   </v-card>
@@ -148,10 +123,10 @@
 </template>
 
 <script>
+import AppPartners from "@/components/frontend/partials/AppPartners";
 import CreatePartner from "@/components/backend/percursu/partners/Create";
 import UpdatePartner from "@/components/backend/percursu/partners/Update";
 import AppMap from "@/components/frontend/partials/AppMap";
-import FeaturedPartners from "@/components/frontend/partials/FeaturedPartners";
 import { getPartnersDatas } from "@/mixins/HelpersData";
 
 export default {
@@ -159,12 +134,12 @@ export default {
 
   components: {
     AppMap,
-    FeaturedPartners
+    AppPartners
   },
 
   methods: {
     onViewPartner: function(username) {
-      this.$router.push({ name: "view-front-partner", params: { username } });
+      this.$router.push({ name: "app-partner", params: { username } });
     }
   }
 };

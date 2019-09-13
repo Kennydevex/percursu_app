@@ -18,8 +18,8 @@
         <template>
           <div data-aos="zoom-out-up" data-aos-delay="300">
             <template v-if="authUser">
-              <!-- :to="{name: 'editar-colobaradores', params: {username: authUser.username}}" -->
               <v-btn
+                :to="{name: 'editar-colobaradores', params: {username: authUser.username}}"
                 v-if="authUser.folk.partner"
                 class="mt-3"
                 color="primary"
@@ -27,8 +27,8 @@
                 dark
                 href="/pre-made-themes"
               >Editar o Meu Perfil</v-btn>
-              <!-- :to="{name: 'criar-colobaradores'}" -->
               <v-btn
+                :to="{name: 'criar-colobaradores'}"
                 v-if="!authUser.folk.partner"
                 class="mt-3"
                 color="primary"
@@ -39,8 +39,8 @@
             </template>
 
             <template v-else>
-              <!-- :to="{name: 'login'}" -->
               <v-btn
+                :to="{name: 'login'}"
                 class="mt-3"
                 color="primary"
                 rounded

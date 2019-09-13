@@ -9,6 +9,10 @@ import Empregos from '@/pages/frontend/Empregos.vue';
 import Principal from '@/pages/frontend/Principal.vue';
 import Login from '@/pages/frontend/Login.vue';
 import Register from '@/pages/frontend/Register.vue';
+import AppPerfil from '@/pages/frontend/Perfil.vue';
+import AppPartner from '@/pages/frontend/Partner.vue';
+
+
 
 //  Admin
 import Admin from '@/components/backend/App.vue';
@@ -261,6 +265,16 @@ export default [
                         component: Colaboradores
                     },
                     {
+                        path: '/colaboradores/criar',
+                        name: 'criar-colobaradores',
+                        component: CreatePartner
+                    },
+                    {
+                        path: '/colaboradores/editar/:username',
+                        name: 'editar-colobaradores',
+                        component: UpdatePartner
+                    },
+                    {
                         path: '/noticias',
                         name: 'noticias',
                         component: Noticias
@@ -273,6 +287,17 @@ export default [
                         name: 'register',
                         component: Register
                     },
+                    {
+                        path: '/perfil/:username',
+                        name: 'app-perfil',
+                        component: AppPerfil
+                    },
+                    {
+                        path: '/colaborador/:username',
+                        name: 'app-partner',
+                        component: AppPartner
+                    },
+
                 ]
             }
         ]
