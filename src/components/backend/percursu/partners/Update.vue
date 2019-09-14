@@ -10,6 +10,7 @@
               <v-stepper-step
                 :complete="step > 1"
                 step="1"
+                editable
                 :rules="[() => formErrors.partner.length == 0]"
               >
                 Dados pessoais
@@ -186,6 +187,7 @@
               <v-stepper-step
                 :complete="step > 2"
                 step="2"
+                editable
                 :rules="[() => formErrors.contacts.length == 0]"
               >
                 Informações de Contacto
@@ -532,6 +534,7 @@
               <v-stepper-step
                 :complete="step > 3"
                 step="3"
+                editable
                 :rules="[() =>formErrors.address.length == 0]"
               >
                 Endereço e Localização Geográfica
@@ -607,6 +610,7 @@
               <v-stepper-step
                 :complete="step > 4"
                 step="4"
+                editable
                 :rules="[() =>formErrors.formation.length == 0]"
               >
                 Formações realizadas
@@ -905,6 +909,7 @@
               <v-stepper-step
                 :complete="step > 5"
                 step="5"
+                editable
                 :rules="[() =>formErrors.experience.length == 0]"
               >
                 Experiencias Profissionais
@@ -1174,6 +1179,7 @@
               <v-stepper-step
                 :complete="step > 6"
                 step="6"
+                editable
                 :rules="[() =>formErrors.skill.length == 0 && ! formErrors.charge.name]"
               >
                 Habilidades e Preferencias
@@ -1295,6 +1301,7 @@
               <!-- ====================================== -->
               <v-stepper-step
                 step="7"
+                editable
                 :rules="[() =>formErrors.final.length == 0]"
               >Finalização</v-stepper-step>
               <v-stepper-content step="7">

@@ -329,7 +329,7 @@
                               :label="'Endereço '+(k+1)"
                               v-model="email.email"
                               @change="findRepeatedEmail(email.email)"
-                              v-validate="'required'"
+                              v-validate="'required|email'"
                               :data-vv-name="'form-step-2.email'+k"
                               :error-messages="errors.collect('form-step-2.email'+k)"
                             ></v-text-field>
@@ -750,10 +750,10 @@
                                       prepend-inner-icon="mdi-calendar"
                                       readonly
                                       v-on="on"
-                                      v-validate="'required|date_format:yyyy-MM|before:valFrom'"
-                                      :data-vv-as="'form-step-4.frm-from'+k"
-                                      :error-messages="errors.collect('form-step-4.frm-from'+k)"
                                     ></v-text-field>
+                                      <!-- v-validate="'required|date_format:yyyy-MM|before:valFrom'"
+                                      :data-vv-as="'form-step-4.frm-from'+k"
+                                      :error-messages="errors.collect('form-step-4.frm-from'+k)" -->
                                   </template>
                                   <v-date-picker
                                     v-model="formation.from"
@@ -1298,7 +1298,7 @@
               <v-stepper-step
                 step="7"
                 :rules="[() =>formErrors.final.length == 0]"
-                editable
+                
               >Finalização</v-stepper-step>
               <v-stepper-content step="7">
                 <v-layout column>
@@ -1311,6 +1311,7 @@
                   <v-flex xs12 md6>
                     <small>Termo de utilização</small>
                     <v-checkbox
+                     v-validate="'required'"
                       label="*Aceitar os termos de utilização e a nossa política de privacidade"
                     ></v-checkbox>
                     <v-checkbox
@@ -1654,11 +1655,11 @@ export default {
     },
 
     nextStep(scope) {
-      // this.$validator.validateAll(scope).then(result => {
-      //   if (result) {
+      this.$validator.validateAll(scope).then(result => {
+        if (result) {
       this.step++;
-      //   }
-      // });
+        }
+      });
     },
 
     prevStep: function() {
