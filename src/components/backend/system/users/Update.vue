@@ -137,7 +137,7 @@
                     name="roles"
                     :items="roles"
                     v-model="formData.roles"
-                    item-text="display_name"
+                    item-text="name"
                     item-value="id"
                     label="Função de utilizador"
                     prepend-inner-icon="mdi-clipboard-account"
@@ -154,7 +154,7 @@
                     name="permissions"
                     :items="permissions"
                     v-model="formData.permissions"
-                    item-text="display_name"
+                    item-text="name"
                     item-value="id"
                     label="Permissão de utilizador"
                     prepend-inner-icon="mdi-clipboard-text"
@@ -249,7 +249,7 @@ export default {
           axios
             .put("/users/" + this.username, this.$data.formData)
             .then(response => {
-              this.feedback("success", response.data.msg, true);
+              this.feedback("success", response.data.msg, 3000, true, 'top');
               window.getApp.$emit("APP_UPDATE_ALL_USERS_DATA");
               this.clear();
               this.$router.push({ name: "list-users" });
@@ -262,9 +262,7 @@ export default {
       });
     },
     goBack: function() {
-      this.clear();
       this.$router.push({ name: "list-users" });
-      this.feedback("error", "Operação cancelada", true);
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-md>
+  <v-container grid-list-md class="pa-0">
     <v-layout row wrap>
       <v-flex xs12>
         <app-map></app-map>
@@ -8,7 +8,9 @@
 
     <v-layout row wrap>
       <v-flex xs12>
-        <app-partners></app-partners>
+        <v-card class="mt-3">
+            <app-partners></app-partners>
+        </v-card>
       </v-flex>
     </v-layout>
 
@@ -35,19 +37,28 @@
                 <v-flex xs12 md3 :key="index">
                   <v-card>
                     <v-list-item>
-                      <v-list-item-avatar color="grey" size="50" :src="`http://localhost:8000/images/folks/avatar/${partner.folk.avatar}`"></v-list-item-avatar>
+                      <v-list-item-avatar
+                        color="grey"
+                        size="50"
+                        :src="`http://localhost:8000/images/folks/avatar/${partner.folk.avatar}`"
+                      ></v-list-item-avatar>
                       <v-list-item-content>
-                        <v-list-item-title class="subtitle-2">{{partner.folk.name}} {{partner.folk.lastname}}</v-list-item-title>
+                        <v-list-item-title
+                          class="subtitle-2"
+                        >{{partner.folk.name}} {{partner.folk.lastname}}</v-list-item-title>
                         <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
-                    <v-img :src="`http://localhost:8000/images/folks/avatar/${partner.folk.cover}`" height="93"></v-img>
+                    <v-img
+                      :src="`http://localhost:8000/images/folks/avatar/${partner.folk.cover}`"
+                      height="93"
+                    ></v-img>
                     <v-card-actions>
                       <v-btn
                         small
                         @click="onViewPartner(partner.folk.user.username)"
                         text
-                        rounded 
+                        rounded
                         outlined
                         color="primary"
                       >Ver</v-btn>

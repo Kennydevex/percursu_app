@@ -14,8 +14,7 @@
           <v-img :src="require('@/assets/folks/account.svg')"></v-img>
         </v-list-item-avatar>
 
-        <v-list-item-title>Estefanio Silva</v-list-item-title>
-        <!-- <v-list-item-title>{{authUser.folk.name}}</v-list-item-title> -->
+        <v-list-item-title>{{authUser.folk.name}}</v-list-item-title>
 
         <v-btn icon @click.stop="mini = !mini">
           <v-icon>mdi-chevron-left</v-icon>
@@ -30,7 +29,7 @@
             <v-text-field single-line outlined rounded prepend-inner-icon="mdi-magnify" name="name" label="Procurar" id="id"></v-text-field>
           </v-list-item-content>
         </v-list-item>
-      </v-list>-->
+      </v-list> -->
 
       <!-- <perfect-scrollbar> -->
         <v-list dense>
@@ -41,8 +40,8 @@
               :group="item.group"
               :prepend-icon="item.icon"
               no-action="no-action"
+              :disabled="!(_is(item.role) || _is('admin') || _is('super-admin'))"
             >
-              <!-- :disabled="!(_is(item.role) || _is('admin') || _is('super-admin'))" -->
 
               <v-list-item slot="activator">
                 <v-list-item-content>
@@ -80,8 +79,8 @@
                   :href="subItem.href"
                   :disabled="subItem.disabled"
                   :target="subItem.target"
+                  v-if="_is(subItem.role) || _is('admin') || _is('super-admin')"
                 >
-                  <!-- v-if="_is(subItem.role) || _is('admin') || _is('super-admin')" -->
 
                   <v-list-item-content>
                     <v-list-item-title>

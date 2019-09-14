@@ -3,17 +3,17 @@
     <v-layout row wrap>
       <v-flex lg3 sm6 xs12>
         <mini-statistic
-          icon="mdi-account-multiple-check"
-          :title="user.length"
+          icon="mdi-account-group"
+          :title="users.length"
           sub-title="Utilizadores"
           color="indigo"
         ></mini-statistic>
       </v-flex>
       <v-flex lg3 sm6 xs12>
         <mini-statistic
-          icon="mdi-file-multiple"
-          :title="user.length"
-          sub-title="Publicações"
+          icon="mdi-account-group"
+          :title="activedUsers.length"
+          sub-title="Utilizadores Ativos"
           color="red"
         ></mini-statistic>
       </v-flex>
@@ -155,6 +155,7 @@ export default {
   mixins: [getUsersDatas, flashAlert, actionAlert],
   data() {
     return {
+      activedUsers: [],
       fab: false,
       loadUserAtivaction: {},
       search: "",
@@ -208,9 +209,17 @@ export default {
     window.getApp.$on("APP_UPDATE_ALL_PERMISSIONS_DATA", () => {
       this.getUpdatedPermissions();
     });
+    this.getFeatured();
   },
 
+
   methods: {
+       getFeatured() {
+      this.activedUsers = this.users.filter(function(user) {
+        return user.status == true;
+      });
+    },
+
     handleToggleCreatePermissionDialog() {
       window.getApp.$emit("APP_PERMISSION_CREATE_DIALOG");
     },

@@ -25,7 +25,7 @@ import categories from './modules/helpers/Categories';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    strict: true,
+    strict: false,
     modules: {
         authentication,
         users,

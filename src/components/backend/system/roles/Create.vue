@@ -51,7 +51,8 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" small text @click="addRole">Guardar</v-btn>
+        <v-btn color="primary" small text @click="addRole(true)">Guardar e Novo</v-btn>
+        <v-btn color="primary" small text @click="addRole(false)">Guardar</v-btn>
         <v-btn small icon text @click="showCreateModel = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -63,6 +64,7 @@
 <script>
 import { getPermissionsDatas } from "@/mixins/HelpersData";
 import validateDictionary from "@/helpers/api/validateDictionary";
+import {clearForm} from '@/mixins/Form'
 export default {
   mixins: [getPermissionsDatas],
   data() {
@@ -93,12 +95,17 @@ export default {
     handleShowHideModel: function() {
       this.showCreateModel = !this.showCreateModel;
     },
-    addRole() {
+    addRole(newRole) {
       this.$validator.validateAll().then(noErrorOnValidate => {
         if (noErrorOnValidate) {
           axios
             .post("/roles", this.$data.role)
             .then(response => {
+              if (newRole) {
+                this.showCreateModel=true;
+                this.clear();
+                return
+              }
               this.handleShowHideModel();
               window.getApp.$emit("APP_UPDATE_ALL_ROLES_DATA");
             })

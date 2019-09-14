@@ -15,6 +15,7 @@ export const getChargesDatas = {
 export const getPartnersDatas = {
     computed: {
         partners: function () { return this.$store.getters.partners; },
+        featuredPartners: function () { return this.$store.getters.featuredPartners; },
         activedPartners: function () { return this.$store.getters.activedPartners; }
     },
     methods: {
@@ -29,6 +30,12 @@ export const getPartnersDatas = {
             this.getUpdatedActivedPartners();
         },
         getUpdatedActivedPartners: function () { this.$store.dispatch('getActivedPartners'); },
+
+        getFeaturedPartners: function () {
+            if (this.featuredPartners.length) { return; }
+            this.getUpdatedFeaturedPartners();
+        },
+        getUpdatedFeaturedPartners: function () { this.$store.dispatch('getFeaturedPartners'); },
     },
 };
 

@@ -1,21 +1,47 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app disable-resize-watcher disable-route-watcher>
+    <v-navigation-drawer v-model="drawer" app disable-resize-watcher>
       <v-list dense>
-        <v-list-item @click="teste">
+        <v-list-item to="/">
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Inicial</v-list-item-title>
+            <v-list-item-title>Início</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="teste">
+        <v-list-item :to="{name: 'colaboradores'}">
+          <v-list-item-action>
+            <v-icon>mdi-account-tie</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Colaboradores</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item :to="{name: 'empregos'}">
+          <v-list-item-action>
+            <v-icon>mdi-hammer</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Empregos</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item :to="{name: 'formacoes'}">
+          <v-list-item-action>
+            <v-icon>mdi-school</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Formações</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item :to="{name: 'noticias'}">
           <v-list-item-action>
             <v-icon>mdi-email</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>Notícias</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -77,6 +103,53 @@
             <template v-slot:activator="{ on }">
               <v-btn v-on="on" text>
                 <v-avatar size="28px">
+                  <!-- :src="`http://http://104.238.165.7/images/folks/avatar/${authUser.folk.avatar}`" -->
+                  <img
+                    :src="`http://http://localhost:8000/images/folks/avatar/${authUser.folk.avatar}`"
+                    alt="Avatar"
+                  />
+                </v-avatar>
+              </v-btn>
+            </template>
+
+            <v-list shaped>
+              <v-list-item-group color="primary">
+                <v-list-item
+                  v-for="(item, i) in items"
+                  :key="i"
+                  :to="!item.href ? { name: item.name } : null"
+                  :href="item.href"
+                  @click="item.click"
+                >
+                  <v-list-item-icon>
+                    <v-icon v-text="item.icon"></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.title"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-menu>
+        </template>
+      </v-toolbar-items>
+
+      <v-toolbar-items class="hidden-md-and-up">
+        <v-btn :ripple="false" to="/" class="pa-2" text>
+          <v-icon>mdi-home</v-icon>
+        </v-btn>
+        <v-divider vertical inset></v-divider>
+        <template v-if="!authUser">
+          <v-btn :to="{name: 'login'}" text>
+            <v-icon>mdi-login</v-icon>
+          </v-btn>
+        </template>
+
+        <template v-else>
+          <v-menu left bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn v-on="on" text>
+                <v-avatar size="28px">
                   <img
                     :src="`http://http://104.238.165.7/images/folks/avatar/${authUser.folk.avatar}`"
                     alt="Avatar"
@@ -125,6 +198,7 @@ export default {
   data() {
     return {
       drawer: false,
+
       items: [
         {
           icon: "mdi-account-card-details",
@@ -141,6 +215,7 @@ export default {
           icon: "mdi-view-dashboard-variant",
           href: "#",
           title: "Dashboard",
+          permission: "acess admin panel",
           click: e => {
             this.$router.push({ name: "dashboard" });
           }
@@ -166,7 +241,11 @@ export default {
   },
 
   methods: {
-    teste() {},
+    teste() {
+      console.log("No menu");
+    },
+
+  
 
     location() {
       if (navigator.geolocation) {

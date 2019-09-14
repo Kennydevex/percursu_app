@@ -28,7 +28,7 @@
                       >Campos preenchidos com informações da sua conta!</v-alert>
                     </v-flex>
                   </v-layout>
-                  <v-layout row wrap pl-5 v-if="_is('admin') || _is('super-admin')">
+                  <v-layout row wrap pl-5 v-if="_is('admin') || _is('super-admin') || _is('manager')">
                     <v-flex xs12 md4>
                       <v-checkbox
                         @change="checkAuthUser()"

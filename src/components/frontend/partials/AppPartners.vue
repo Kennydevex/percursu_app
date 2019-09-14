@@ -1,156 +1,46 @@
 <template>
-    <v-container grid-list-xs>
-      <v-row>
-        <v-col cols="12">
-          <v-row align="center" justify="center">
-            <h2 class="text-center font-weight-thin">Destaques</h2>
-          </v-row>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" justify="canter" align="center">
-          <div
-            @mouseenter="$refs.swiperRef.swiper.autoplay.stop()"
-            @mouseleave="$refs.swiperRef.swiper.autoplay.start()"
-          >
-            <swiper :options="swiperOption" ref="swiperRef">
-              <swiper-slide></swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
+  <v-container grid-list-xs>
+    <v-row>
+      <v-col cols="12">
+        <v-row align="center" justify="center">
+          <h2 class="text-center font-weight-thin">Destaques</h2>
+        </v-row>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" justify="canter" align="center">
+        <div
+          @mouseenter="$refs.swiperRef.swiper.autoplay.stop()"
+          @mouseleave="$refs.swiperRef.swiper.autoplay.start()"
+        >
+          <swiper :options="swiperOption" ref="swiperRef">
+            <template v-for="(partner, i) in featuredPartners">
+              <swiper-slide :key="i">
+                <v-avatar
+                  @click="onViewPartner(partner.folk.user.username)"
+                  class="featured_partner"
+                  color="grey lighten-3"
+                  size="130"
+                >
+                  <img :src="require('../../../assets/app/default/account.svg')" alt="avatar" />
                 </v-avatar>
               </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <swiper-slide>
-                <v-avatar color="primary" size="100">
-                  <img
-                    v-if="avatar"
-                    src="https://vuetifyjs.com/apple-touch-icon-180x180.png"
-                    alt="avatar"
-                  />
-                  <span v-else>VJ</span>
-                </v-avatar>
-              </swiper-slide>
-              <div class="swiper-pagination mt-5" slot="pagination"></div>
-            </swiper>
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
+            </template>
+            <div class="swiper-pagination mt-5" slot="pagination"></div>
+          </swiper>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script>
-// import {categoriesTags} from '@mixins/CategoriesTags'
+import { getPartnersDatas } from "@/mixins/HelpersData";
 export default {
-  // mixins: [categoriesTags],
+  mixins: [getPartnersDatas],
   name: "",
   data: () => ({
     avatar: true,
     swiperOption: {
-        
       slidesPerView: 3,
       spaceBetween: 5,
       loop: true,
@@ -160,10 +50,6 @@ export default {
         clickable: true,
         dynamicBullets: true
       },
-      //   navigation: {
-      //     nextEl: ".swiper-button-next",
-      //     prevEl: ".swiper-button-prev"
-      //   },
 
       autoplay: {
         delay: 5000
@@ -188,8 +74,26 @@ export default {
         }
       }
     }
-  })
+  }),
+
+  created() {
+    this.getFeaturedPartners();
+  },
+
+  methods: {
+    onViewPartner: function(username) {
+      this.$router.push({ name: "app-partner", params: { username } });
+    }
+    // getFeatured() {
+    //   this.featuredPartners = this.activedPartners.filter(function(partner) {
+    //     return partner.featured == true;
+    //   });
+    // }
+  }
 };
 </script>
 <style lang="scss" scoped>
+.featured_partner {
+  cursor: pointer;
+}
 </style>

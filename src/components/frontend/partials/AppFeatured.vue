@@ -19,15 +19,15 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
                   <v-container grid-list-xs fluid>
-                    <span>Number 10</span>
+                    <span>Há 10 dias</span>
                     <br />
                     <span class="text--primary">
-                      <span>Whitehaven Beach</span>
+                      <span>Título post estático</span>
                       <br />
                     </span>
                   </v-container>
@@ -50,14 +50,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -76,14 +76,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -102,14 +102,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -128,14 +128,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -154,14 +154,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -180,14 +180,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -206,14 +206,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -232,14 +232,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -258,14 +258,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -284,14 +284,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -310,14 +310,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>
@@ -336,14 +336,14 @@
                 <v-img
                   class="white--text"
                   height="120px"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="require('@/assets/app/posts/default.gif')"
                 ></v-img>
 
                 <v-card-text>
-                  <span>Number 10</span>
+                  <span>Há 10 dias</span>
                   <br />
                   <span class="text--primary">
-                    <span>Whitehaven Beach</span>
+                    <span>Título post estático</span>
                     <br />
                   </span>
                 </v-card-text>

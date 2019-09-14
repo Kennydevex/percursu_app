@@ -6,7 +6,7 @@
         <v-flex lg3 sm6 xs12>
           <mini-statistic
             icon="mdi-account-multiple-check"
-            :title="user.length"
+            :title="users.length"
             sub-title="Utilizadores"
             color="indigo"
           ></mini-statistic>
@@ -43,8 +43,10 @@
 
 <script>
 import MiniStatistic from "@/widgets/statistic/MiniStatistic";
+import { getUsersDatas } from "@/mixins/HelpersData";
 
 export default {
+  mixins: [getUsersDatas],
   components: {
     MiniStatistic
   },
@@ -69,6 +71,19 @@ export default {
       responsive: true,
       maintainAspectRatio: false
     }
-  })
+  }),
+
+  created () {
+    this.adminPanel();
+  },
+
+  methods: {
+    adminPanel: function() {
+      axios
+        .get("/adminPanel")
+        .then(response => {})
+        .catch(error => {});
+    }
+  }
 };
 </script>

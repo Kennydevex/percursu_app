@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-parallax src="http://localhost:8000/images/folks/avatar/1568084449.jpeg" height="300">
+    <!-- <v-parallax src="http://http://104.238.165.7/images/folks/avatar/1568084449.jpeg" height="300"> -->
+    <v-parallax :src="require('../../../assets/app/static/parralax.gif')" height="300">
       <v-layout
         data-aos="fade-down"
         data-aos-duration="2000"

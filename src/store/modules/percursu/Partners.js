@@ -4,6 +4,7 @@ export default ({
   state: {
     partners: [],
     activedPartners: [],
+    featuredPartners: [],
   },
 
   getters: {
@@ -12,6 +13,9 @@ export default ({
     },
     activedPartners(state) {
       return state.activedPartners;
+    },
+    featuredPartners(state) {
+      return state.featuredPartners;
     },
   },
 
@@ -22,6 +26,10 @@ export default ({
 
     updateActivedPartners(state, payload) {
       state.activedPartners = payload;
+    },
+
+    updateFeaturedPartners(state, payload) {
+      state.featuredPartners = payload;
     },
   },
 
@@ -35,6 +43,12 @@ export default ({
     getActivedPartners(context) {
       axios.get('/activedPartners').then(function (response) {
         context.commit('updateActivedPartners', response.data.data);
+      });
+    },
+
+    getFeaturedPartners(context) {
+      axios.get('/featuredPartners').then(function (response) {
+        context.commit('updateFeaturedPartners', response.data.data);
       });
     },
   }

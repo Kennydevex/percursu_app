@@ -4,8 +4,9 @@
       <swiper-slide>
         <v-img
           class="white--text slide--igm"
-          :src="require('@/assets/app/sliders/slide1.jpg')"
+          :src="require('@/assets/app/sliders/slide1.gif')"
           aspect-ratio="2.75"
+          min-height="220"
         >
           <div class="appCard ani" swiper-animate-effect="fadeIn" swiper-animate-duration="4s">
             <div
@@ -39,9 +40,10 @@
               swiper-animate-effect="slideInRight"
               swiper-animate-duration="2s"
             >
-              <p
-                class="font-weight-medium"
-              >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.</p>
+              <p class="font-weight-medium">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.
+              </p>
               <div
                 class="appCard-footer ani text-xs-right"
                 swiper-animate-effect="bounceInUp"
@@ -56,8 +58,9 @@
       <swiper-slide>
         <v-img
           class="white--text slide--igm"
-          :src="require('@/assets/app/sliders/slide2.jpg')"
+          :src="require('@/assets/app/sliders/slide2.gif')"
           aspect-ratio="2.75"
+          min-height="220"
         >
           <div class="appCard ani" swiper-animate-effect="fadeIn" swiper-animate-duration="4s">
             <div
@@ -90,7 +93,6 @@
               swiper-animate-effect="slideInRight"
               swiper-animate-duration="2s"
             >
-            
               <p
                 class="font-weight-medium"
               >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.</p>
@@ -105,9 +107,120 @@
           </div>
         </v-img>
       </swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-      <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>
+
+       <swiper-slide>
+        <v-img
+          class="white--text slide--igm"
+          :src="require('@/assets/app/sliders/slide3.gif')"
+          aspect-ratio="2.75"
+          min-height="220"
+        >
+          <div class="appCard ani" swiper-animate-effect="fadeIn" swiper-animate-duration="4s">
+            <div
+              class="appCard-header ani"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="fadeIn"
+              swiper-animate-duration="2s"
+            >
+              <div
+                class="title font-weight-light text-uppercase grey--text text--lighten-2"
+              >Fromação Profissional</div>
+            </div>
+            <div class="header_divider"></div>
+
+            <v-divider
+              class="ani ml-5"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="rotateInDownRight"
+              swiper-animate-duration="2s"
+              inset
+            ></v-divider>
+
+            <div
+              class="divider ani inset"
+              swiper-animate-effect="rotateInUpRight"
+              swiper-animate-duration="4s"
+            ></div>
+            <div
+              class="appCard-content ani"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="slideInRight"
+              swiper-animate-duration="2s"
+            >
+              <p class="font-weight-medium">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.
+              </p>
+              <div
+                class="appCard-footer ani text-xs-right"
+                swiper-animate-effect="bounceInUp"
+                swiper-animate-duration="3s"
+              >
+                <v-btn small outlined color="grey lighten-3" tile>Detalhes</v-btn>
+              </div>
+            </div>
+          </div>
+        </v-img>
+      </swiper-slide>
+
+
+       <swiper-slide>
+        <v-img
+          class="white--text slide--igm"
+          :src="require('@/assets/app/sliders/slide4.gif')"
+          aspect-ratio="2.75"
+          min-height="220"
+        >
+          <div class="appCard ani" swiper-animate-effect="fadeIn" swiper-animate-duration="4s">
+            <div
+              class="appCard-header ani"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="fadeIn"
+              swiper-animate-duration="2s"
+            >
+              <div
+                class="title font-weight-light text-uppercase grey--text text--lighten-2"
+              >Fromação Profissional</div>
+            </div>
+            <div class="header_divider"></div>
+
+            <v-divider
+              class="ani ml-5"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="rotateInDownRight"
+              swiper-animate-duration="2s"
+              inset
+            ></v-divider>
+
+            <div
+              class="divider ani inset"
+              swiper-animate-effect="rotateInUpRight"
+              swiper-animate-duration="4s"
+            ></div>
+            <div
+              class="appCard-content ani"
+              swiper-animate-delay="1s"
+              swiper-animate-effect="slideInRight"
+              swiper-animate-duration="2s"
+            >
+              <p class="font-weight-medium">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae accusamus quisquam provident natus.
+              </p>
+              <div
+                class="appCard-footer ani text-xs-right"
+                swiper-animate-effect="bounceInUp"
+                swiper-animate-duration="3s"
+              >
+                <v-btn small outlined color="grey lighten-3" tile>Detalhes</v-btn>
+              </div>
+            </div>
+          </div>
+        </v-img>
+      </swiper-slide>
+      <div class="swiper-pagination hidden-xs-only" slot="pagination"></div>
+      <div class="swiper-button-prev hidden-xs-only" slot="button-prev"></div>
+      <div class="swiper-button-next hidden-xs-only" slot="button-next"></div>
     </swiper>
   </v-card>
 </template>
@@ -252,7 +365,11 @@ $screen-md: 600px;
       background: transparent;
     }
     @include sm {
-      padding: 20px;
+      padding: 10px 75px 10px 10px;
+    }
+    @include md {
+      padding-left: 70px;
+      padding-right: 70px;
     }
   }
   .divider {

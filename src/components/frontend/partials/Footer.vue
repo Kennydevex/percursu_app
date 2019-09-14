@@ -2,8 +2,15 @@
   <v-footer app absolute padless>
     <v-card-text flat tile width="100%" class="pa-0 text-center">
       <v-card-text class="cyan darken-4 white--text">
-        <v-btn dark v-for="icon in icons" :key="icon" class="mx-4" icon>
-          <v-icon size="24px">{{ icon }}</v-icon>
+        <v-btn
+          dark
+          v-for="item in items"
+          :key="item.icon"
+          :to="{ name: item.name }"
+          class="mx-4"
+          icon
+        >
+          <v-icon size="24px">{{ item.icon }}</v-icon>
         </v-btn>
       </v-card-text>
 
@@ -59,13 +66,11 @@
                 <v-card-title
                   class="justify-center grey--text text--lighten-3"
                   primary-title
-                >Subscrição</v-card-title>
+                >Serviços</v-card-title>
                 <v-divider dark></v-divider>
                 <v-card-text class="px-0 grey--text text--lighten-3">
                   <v-layout row wrap>
-                    <v-flex xs12>
-                      Teste
-                    </v-flex>
+                    <v-flex xs12>Lista de serviços e recursos da plataforma</v-flex>
                   </v-layout>
                 </v-card-text>
               </v-card-text>
@@ -75,13 +80,11 @@
                 <v-card-title
                   class="justify-center grey--text text--lighten-3"
                   primary-title
-                >Conexão</v-card-title>
+                >Ligações</v-card-title>
                 <v-divider dark></v-divider>
                 <v-card-text class="px-0 grey--text text--lighten-3">
                   <v-layout row wrap>
-                    <v-flex xs12>
-                      teste
-                    </v-flex>
+                    <v-flex xs12>Ligações com outras empresas ou instituições</v-flex>
                   </v-layout>
                 </v-card-text>
               </v-card-text>
@@ -101,7 +104,36 @@
 <script>
 export default {
   data: () => ({
-    icons: ["mdi-home", "mdi-account-tie", "mdi-briefcase"]
+    icons: ["mdi-home", "mdi-account-tie", "mdi-briefcase"],
+    items: [
+      {
+        icon: "mdi-home",
+        name: "home",
+        click: e => {
+          this.$router.push({
+            name: "home"
+          });
+        }
+      },
+      {
+        icon: "mdi-account-tie",
+        name: "colaboradores",
+        click: e => {
+          this.$router.push({
+            name: "colaboradores"
+          });
+        }
+      },
+      {
+        icon: "mdi-briefcase",
+        name: "formacoes",
+        click: e => {
+          this.$router.push({
+            name: "formacoes"
+          });
+        }
+      }
+    ]
   }),
   methods: {
     test() {

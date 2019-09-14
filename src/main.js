@@ -18,7 +18,7 @@ import { init } from '@/helpers/init';
 import { acl } from '@/mixins/AccessControl';
 AOS.init();
 
-
+// Vue.prototype.$moment = moment;
 Vue.config.productionTip = false;
 Vue.use(VeeValidate);
 Validator.localize('pt', pt);

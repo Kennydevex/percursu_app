@@ -49,6 +49,7 @@ import ListCategories from '@/components/backend/cms/categories/List.vue';
 import Tags from '@/components/backend/cms/tags/Index.vue';
 import ListTags from '@/components/backend/cms/tags/List.vue';
 
+import Error_403 from '@/pages/errors/403.vue';
 
 
 
@@ -292,14 +293,21 @@ export default [
                         name: 'app-perfil',
                         component: AppPerfil
                     },
+
                     {
-                        path: '/colaborador/:username',
-                        name: 'app-partner',
-                        component: AppPartner
-                    },
+                        path: '/403',
+                        name: '403_error',
+                        component: Error_403
+                    }
+
 
                 ]
-            }
+            },
+            {
+                path: 'colaborador/:username',
+                name: 'app-partner',
+                component: AppPartner
+            },
         ]
     },
 ];
