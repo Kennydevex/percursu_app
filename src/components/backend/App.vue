@@ -11,8 +11,8 @@
     >
       <v-list-item>
         <v-list-item-avatar>
-          <v-img :src="require('@/assets/folks/account.svg')"></v-img>
-        </v-list-item-avatar>
+          <v-img :src="`http://http://104.238.165.7/images/folks/avatar/${authUser.folk.avatar}`"></v-img>
+        </v-list-item-avatar> 
 
         <v-list-item-title>{{authUser.folk.name}}</v-list-item-title>
 

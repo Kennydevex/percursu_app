@@ -87,8 +87,7 @@
       <v-container fluid class="mt-0 pt-0">
         <v-row align="center" justify="space-around">
           <v-img
-            src="https://picsum.photos/id/11/500/300"
-            lazy-src="https://picsum.photos/id/11/10/6"
+            :src="`http://http://104.238.165.7/images/folks/cover/${authUser.folk.cover}`"
             aspect-ratio="1"
             class="grey lighten-2"
             max-height="300"

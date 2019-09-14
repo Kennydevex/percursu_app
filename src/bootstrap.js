@@ -8,8 +8,8 @@ window.moment.locale('pt-br');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.axios.defaults.baseURL = 'http://localhost:8000/api/v1';
-// window.axios.defaults.baseURL = 'http://104.238.165.7/api/v1';
+// window.axios.defaults.baseURL = 'http://localhost:8000/api/v1';
+window.axios.defaults.baseURL = 'http://104.238.165.7/api/v1';
 
 
 // import Echo from 'laravel-echo'

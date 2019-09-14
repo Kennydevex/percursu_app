@@ -103,9 +103,8 @@
             <template v-slot:activator="{ on }">
               <v-btn v-on="on" text>
                 <v-avatar size="28px">
-                  <!-- :src="`http://http://104.238.165.7/images/folks/avatar/${authUser.folk.avatar}`" -->
                   <img
-                    :src="`http://http://localhost:8000/images/folks/avatar/${authUser.folk.avatar}`"
+                  :src="`http://http://104.238.165.7/images/folks/avatar/${authUser.folk.avatar}`"
                     alt="Avatar"
                   />
                 </v-avatar>

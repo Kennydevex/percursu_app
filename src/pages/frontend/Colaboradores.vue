@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-md class="pa-0">
+  <v-container grid-list-md class="pt-0">
     <v-layout row wrap>
       <v-flex xs12>
         <app-map></app-map>
@@ -40,7 +40,7 @@
                       <v-list-item-avatar
                         color="grey"
                         size="50"
-                        :src="`http://localhost:8000/images/folks/avatar/${partner.folk.avatar}`"
+                        :src="`http://http://104.238.165.7/images/folks/avatar/${authUser.folk.avatar}`"
                       ></v-list-item-avatar>
                       <v-list-item-content>
                         <v-list-item-title
@@ -50,7 +50,7 @@
                       </v-list-item-content>
                     </v-list-item>
                     <v-img
-                      :src="`http://localhost:8000/images/folks/avatar/${partner.folk.cover}`"
+                      :src="`http://http://104.238.165.7/images/folks/cover/${authUser.folk.cover}`"
                       height="93"
                     ></v-img>
                     <v-card-actions>
